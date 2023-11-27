@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_jwt_login/providers/login_form_provider.dart';
 import 'package:flutter_jwt_login/services/auth_service.dart';
+import 'package:flutter_jwt_login/services/notification_service.dart';
 import 'package:provider/provider.dart';
 
 import '../widgets/form_field.dart';
@@ -237,16 +238,17 @@ class _RegisterFormState extends State<_RegisterForm> {
 
                           if (errorMessage == null) {
                             Navigator.pushReplacementNamed(context, '/home');
+                            emailController.clear();
+                            passwordController.clear();
+                            confirmPasswordController.clear();
                           } else {
                             // TODO: mostrar error en pantalla
-                            print(errorMessage);
+                            NotificationsService.showSnackbar(errorMessage);
                             loginForm.isLoading = false;
                           }
                         },
                   style: const ButtonStyle().copyWith(
-                    backgroundColor: MaterialStateProperty.all(
-                      loginForm.isValidForm() ? null : Colors.grey.shade300,
-                    ),
+                    backgroundColor: MaterialStateProperty.all(null),
                   ),
                   child: Text(
                     loginForm.isLoading ? 'Espere' : 'Registrar',

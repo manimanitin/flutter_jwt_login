@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors, sort_child_properties_last
 
 import 'package:flutter/material.dart';
+import 'package:flutter_jwt_login/services/auth_service.dart';
 
 import '../colors/colors.dart';
 
@@ -22,6 +23,7 @@ class HomeScreen extends StatelessWidget {
             const SizedBox(height: 20),
             ElevatedButton(
               onPressed: () {
+                AuthService().logout();
                 Navigator.pushNamed(context, '/login');
               },
               child: const Text('Login'),
@@ -32,6 +34,7 @@ class HomeScreen extends StatelessWidget {
             const SizedBox(height: 20),
             ElevatedButton(
               onPressed: () {
+                AuthService().logout();
                 Navigator.pushNamed(context, '/registrar');
               },
               child: const Text('Registrar'),

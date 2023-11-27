@@ -22,16 +22,21 @@ class AuthService extends ChangeNotifier {
     final resp = await http.post(url,
         headers: {"Content-Type": "application/json"},
         body: json.encode(authData));
+    print(json.decode(resp.body));
 
-    final Map<String, dynamic> decodedResp = json.decode(resp.body);
+    print(json.decode(resp.body).runtimeType);
 
-    if (decodedResp.containsKey('token')) {
+    if ((resp.statusCode ~/ 100) == 2) {
+      final Map<String, dynamic> decodedResp = json.decode(resp.body);
+
       // Token hay que guardarlo en un lugar seguro
       await storage.write(key: 'token', value: decodedResp['token']);
       // decodedResp['idToken'];
       return null;
     } else {
-      return decodedResp['error']['message'];
+      final Map<String, dynamic> decodedResp = json.decode(resp.body)[0];
+      print(decodedResp);
+      return decodedResp['description'];
     }
   }
 
@@ -52,13 +57,28 @@ class AuthService extends ChangeNotifier {
     final resp = await http.post(url,
         headers: {"Content-Type": "application/json"},
         body: json.encode(authData));
+    print(resp.body);
 
+    print(resp.body.runtimeType);
     /*final resp = await http.post(url,
         headers: <String, String>{
           'Content-Type': 'application/json; charset=UTF-8',
           'Accept': 'application/json'
         },
         body: json.encode(authData));*/
+
+    if ((resp.statusCode ~/ 100) == 2) {
+      final Map<String, dynamic> decodedResp = json.decode(resp.body);
+
+      // Token hay que guardarlo en un lugar seguro
+      await storage.write(key: 'token', value: decodedResp['token']);
+      // decodedResp['idToken'];
+      return null;
+    } else {
+      final String error = resp.body;
+
+      return error;
+    }
 
     final Map<String, dynamic> decodedResp = json.decode(resp.body);
     print(decodedResp);

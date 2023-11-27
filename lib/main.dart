@@ -19,24 +19,22 @@ class AppState extends StatelessWidget {
       providers: [
         ChangeNotifierProvider(create: (_) => AuthService()),
       ],
-      child: const MainApp(),
+      child: MainApp(),
     );
   }
 }
 
 class MainApp extends StatelessWidget {
-  const MainApp({super.key});
-
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Login',
-      initialRoute: '/home',
+      initialRoute: '/checking',
       routes: {
-        '/home': (_) => HomeScreen(),
-        '/login': (_) => LoginScreen(),
-        '/registrar': (_) => RegisterScreen(),
+        '/home': (_) => const HomeScreen(),
+        '/login': (_) => const LoginScreen(),
+        '/registrar': (_) => const RegisterScreen(),
         '/checking': (_) => CheckAuthScreen(),
       },
       scaffoldMessengerKey: NotificationsService.messengerKey,
