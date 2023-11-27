@@ -32,7 +32,7 @@ class AppTextFormField extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.only(bottom: 20),
-      child: AppTextFormField(
+      child: TextFormField(
         controller: controller,
         keyboardType: keyboardType,
         textInputAction: textInputAction,

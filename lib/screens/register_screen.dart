@@ -24,21 +24,19 @@ class _RegisterScreenState extends State<RegisterScreen> {
     r'^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$#!%*?&_])[A-Za-z\d@#$!%*?&_].{7,}$',
   );
 
-  // FocusNode confirmFocusNode = FocusNode();
-
   bool isObscure = true;
   bool isConfirmPasswordObscure = true;
 
   @override
   Widget build(BuildContext context) {
-    final size = context.size;
+    final size = MediaQuery.of(context).size;
     return Scaffold(
       body: Form(
         key: _formKey,
         child: ListView(
           children: [
             Container(
-              height: size!.height * 0.24,
+              height: size.height * 0.24,
               width: double.infinity,
               padding: const EdgeInsets.all(20),
               decoration: const BoxDecoration(
@@ -135,22 +133,10 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     },
                     controller: passwordController,
                     obscureText: isObscure,
-                    // onEditingComplete: () {
-                    //   FocusScope.of(context).unfocus();
-                    //   FocusScope.of(context).requestFocus(confirmFocusNode);
-                    // },
                     suffixIcon: Padding(
                       padding: const EdgeInsets.only(right: 15),
                       child: Focus(
-                        /// If false,
-                        ///
-                        /// disable focus for all of this node's descendants
                         descendantsAreFocusable: false,
-
-                        /// If false,
-                        ///
-                        /// make this widget's descendants un-traversable.
-                        // descendantsAreTraversable: false,
                         child: IconButton(
                           onPressed: () => setState(() {
                             isObscure = !isObscure;
@@ -174,7 +160,6 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     labelText: 'Confirm Password',
                     keyboardType: TextInputType.visiblePassword,
                     textInputAction: TextInputAction.done,
-                    // focusNode: confirmFocusNode,
                     onChanged: (value) {
                       _formKey.currentState?.validate();
                     },
@@ -193,15 +178,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     suffixIcon: Padding(
                       padding: const EdgeInsets.only(right: 15),
                       child: Focus(
-                        /// If false,
-                        ///
-                        /// disable focus for all of this node's descendants.
                         descendantsAreFocusable: false,
-
-                        /// If false,
-                        ///
-                        /// make this widget's descendants un-traversable.
-                        // descendantsAreTraversable: false,
                         child: IconButton(
                           onPressed: () {
                             setState(() {

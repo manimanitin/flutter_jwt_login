@@ -1,8 +1,7 @@
 // ignore_for_file: prefer_const_constructors, sort_child_properties_last
 
 import 'package:flutter/material.dart';
-import 'login_screen.dart';
-import 'register_screen.dart';
+
 import '../colors/colors.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -23,10 +22,7 @@ class HomeScreen extends StatelessWidget {
             const SizedBox(height: 20),
             ElevatedButton(
               onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => const LoginScreen()),
-                );
+                Navigator.pushNamed(context, '/login');
               },
               child: const Text('Login'),
               style: ElevatedButton.styleFrom(
@@ -36,11 +32,7 @@ class HomeScreen extends StatelessWidget {
             const SizedBox(height: 20),
             ElevatedButton(
               onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => const RegistrarScreen()),
-                );
+                Navigator.pushNamed(context, '/registrar');
               },
               child: const Text('Registrar'),
               style: ElevatedButton.styleFrom(
