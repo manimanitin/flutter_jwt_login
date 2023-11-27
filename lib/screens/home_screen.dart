@@ -19,19 +19,7 @@ class HomeScreen extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            const Text(
-              'Bienvenido',
-              style: TextStyle(
-                fontSize: 30,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
             const SizedBox(height: 20),
-            /* Image.asset(
-              'assets/imgs/login.jpg',
-              height: 300,
-              width: 300,
-            )*/
             const SizedBox(height: 20),
             ElevatedButton(
               onPressed: () {

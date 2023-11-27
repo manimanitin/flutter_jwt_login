@@ -54,7 +54,7 @@ class LoginScreen extends StatelessWidget {
               },
               child: const Text('Registrar'),
               style: ElevatedButton.styleFrom(
-                backgroundColor: AppColors.buttonBrownColor,
+                backgroundColor: AppColors.buttonGreenColor,
               ),
             ),
           ],
