@@ -75,7 +75,7 @@ class __LoginFormState extends State<_LoginForm> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  'Sign in to your\nAccount',
+                  'Ingrese a su\nCuenta',
                   style: Theme.of(context).textTheme.titleLarge?.copyWith(
                         color: AppColors.grey,
                         fontWeight: FontWeight.bold,
@@ -85,7 +85,7 @@ class __LoginFormState extends State<_LoginForm> {
                   height: 6,
                 ),
                 Text(
-                  'Sign in to your Account',
+                  'Ingrese a su cuenta',
                   style: Theme.of(context).textTheme.bodySmall?.copyWith(
                         color: AppColors.grey,
                         fontWeight: FontWeight.bold,
@@ -107,24 +107,24 @@ class __LoginFormState extends State<_LoginForm> {
                   onChanged: (value) => loginForm.email = value,
                   validator: (value) {
                     return value!.isEmpty
-                        ? 'Please, Enter Email Address'
+                        ? 'Por favor ingrese su Email'
                         : _LoginForm.emailRegex.hasMatch(value)
                             ? null
-                            : 'Invalid Email Address';
+                            : 'Email invalido';
                   },
                   controller: emailController,
                 ),
                 AppTextFormField(
-                  labelText: 'Password',
+                  labelText: 'Contraseña',
                   keyboardType: TextInputType.visiblePassword,
                   textInputAction: TextInputAction.done,
                   onChanged: (value) => loginForm.password = value,
                   validator: (value) {
                     return value!.isEmpty
-                        ? 'Please, Enter Password'
+                        ? 'Por favor ingrese su contraseña'
                         : _LoginForm.passwordRegex.hasMatch(value)
                             ? null
-                            : 'Invalid Password';
+                            : 'Contraseña invalida';
                   },
                   controller: passwordController,
                   obscureText: isObscure,
@@ -154,7 +154,7 @@ class __LoginFormState extends State<_LoginForm> {
                   onPressed: () {},
                   style: Theme.of(context).textButtonTheme.style,
                   child: Text(
-                    'Forgot Password?',
+                    '¿Olvidó su contraseña?',
                     style: Theme.of(context).textTheme.bodySmall?.copyWith(
                           color: AppColors.primaryColor,
                           fontWeight: FontWeight.bold,
@@ -212,18 +212,17 @@ class __LoginFormState extends State<_LoginForm> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(
-                  "Don't have an account?",
+                  "¿No tiene una cuenta?",
                   style: Theme.of(context)
                       .textTheme
                       .bodySmall
                       ?.copyWith(color: Colors.black),
                 ),
                 TextButton(
-                  onPressed: () =>
-                      Navigator.pushReplacementNamed(context, '/registrar'),
+                  onPressed: () => Navigator.pushNamed(context, '/registrar'),
                   style: Theme.of(context).textButtonTheme.style,
                   child: Text(
-                    'Register',
+                    'Registrar',
                     style: Theme.of(context).textTheme.bodySmall?.copyWith(
                           color: AppColors.primaryColor,
                           fontWeight: FontWeight.bold,

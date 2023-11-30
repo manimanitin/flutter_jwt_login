@@ -95,7 +95,7 @@ class _RegisterFormState extends State<_RegisterForm> {
                 Column(
                   children: [
                     Text(
-                      'Register',
+                      'Registrar',
                       style: Theme.of(context).textTheme.titleLarge?.copyWith(
                             color: AppColors.grey,
                             fontWeight: FontWeight.bold,
@@ -105,7 +105,7 @@ class _RegisterFormState extends State<_RegisterForm> {
                       height: 6,
                     ),
                     Text(
-                      'Create your account',
+                      'Crea tu cuenta',
                       style: Theme.of(context).textTheme.bodySmall?.copyWith(
                             color: AppColors.grey,
                             fontWeight: FontWeight.bold,
@@ -131,24 +131,24 @@ class _RegisterFormState extends State<_RegisterForm> {
                   onChanged: (value) => loginForm.email = value,
                   validator: (value) {
                     return value!.isEmpty
-                        ? 'Please, Enter Email Address'
+                        ? 'Por favor ingrese su correo'
                         : _RegisterForm.emailRegex.hasMatch(value)
                             ? null
-                            : 'Invalid Email Address';
+                            : 'Email invalido';
                   },
                   controller: emailController,
                 ),
                 AppTextFormField(
-                  labelText: 'Password',
+                  labelText: 'Contraseña',
                   keyboardType: TextInputType.visiblePassword,
                   textInputAction: TextInputAction.next,
                   onChanged: (value) => loginForm.password = value,
                   validator: (value) {
                     return value!.isEmpty
-                        ? 'Please, Enter Password'
+                        ? 'Por favor ingrese su contraseña'
                         : _RegisterForm.passwordRegex.hasMatch(value)
                             ? null
-                            : 'Invalid Password';
+                            : 'Contraseña invalida';
                   },
                   controller: passwordController,
                   obscureText: isObscure,
@@ -176,7 +176,7 @@ class _RegisterFormState extends State<_RegisterForm> {
                   ),
                 ),
                 AppTextFormField(
-                  labelText: 'Confirm Password',
+                  labelText: 'Confirmar contraseña',
                   keyboardType: TextInputType.visiblePassword,
                   textInputAction: TextInputAction.done,
                   onChanged: (value) {
@@ -184,13 +184,13 @@ class _RegisterFormState extends State<_RegisterForm> {
                   },
                   validator: (value) {
                     return value!.isEmpty
-                        ? 'Please, Re-Enter Password'
+                        ? 'Por favor, reingrese su contraseña'
                         : _RegisterForm.passwordRegex.hasMatch(value)
                             ? passwordController.text ==
                                     confirmPasswordController.text
                                 ? null
-                                : 'Password not matched!'
-                            : 'Invalid Password!';
+                                : 'Contraseña no identica'
+                            : 'Contraseña invalida';
                   },
                   controller: confirmPasswordController,
                   obscureText: isConfirmPasswordObscure,
@@ -263,7 +263,7 @@ class _RegisterFormState extends State<_RegisterForm> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(
-                  'I have an account?',
+                  'Tengo una cuenta',
                   style: Theme.of(context)
                       .textTheme
                       .bodySmall
@@ -271,7 +271,7 @@ class _RegisterFormState extends State<_RegisterForm> {
                 ),
                 TextButton(
                   onPressed: () {
-                    Navigator.pop(context);
+                    Navigator.pushReplacementNamed(context, '/login');
                   },
                   style: Theme.of(context).textButtonTheme.style,
                   child: Text(
